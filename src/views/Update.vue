@@ -40,7 +40,7 @@
 <script setup>
 import PocketBase from "pocketbase";
 import { onMounted, ref } from "vue";
-const pb = new PocketBase("http://127.0.0.1:8090");
+const pb = new PocketBase("https://pocketbase-production-91bb.up.railway.app");
 const data = ref([]);
 onMounted(async () => {
   data.value = await pb.collection("all_users").getFullList();

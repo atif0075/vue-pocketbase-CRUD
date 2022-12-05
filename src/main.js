@@ -7,6 +7,7 @@ import "./style.css";
 
 const app = createApp(App);
 import VueProgressBar from "@aacassandra/vue3-progressbar";
+import Maska from "maska";
 const options = {
   color: "#3C82F6",
   failedColor: "#874b4b",
@@ -21,6 +22,6 @@ const options = {
   inverse: false,
 };
 app.use(createPinia());
-app.use(router).use(VueProgressBar, options);
+app.use(router).use(VueProgressBar, options).use(Maska);
 
 app.mount("#app");
