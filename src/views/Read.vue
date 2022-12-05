@@ -1,6 +1,6 @@
 <template>
   <main>
-    <div class="max-w-[42rem] mt-5 mx-auto">
+    <div class="container mt-5 mx-auto">
       <div class="overflow-x-auto relative">
         <table
           class="w-full text-sm text-left text-zinc-500 dark:text-zinc-400"
