@@ -1,6 +1,6 @@
 <template>
   <main>
-    <div class="max-w-[42rem] mt-5 mx-auto">
+    <div class="container mt-5 mx-auto">
       <div class="overflow-x-auto relative">
         <table
           class="w-full text-sm text-left text-zinc-500 dark:text-zinc-400"
@@ -13,6 +13,7 @@
               <th scope="col" class="py-3 px-6">Email</th>
               <th scope="col" class="py-3 px-6">Company</th>
               <th scope="col" class="py-3 px-6">Phone</th>
+              <th scope="col" class="py-3 px-6">Delete</th>
             </tr>
           </thead>
           <tbody>
@@ -30,6 +31,23 @@
               <td class="py-4 px-6">{{ item.email }}</td>
               <td class="py-4 px-6">{{ item.company }}</td>
               <td class="py-4 px-6">{{ item.phone }}</td>
+              <td class="py-4 px-6">
+                <svg
+                  @click="deleteUser(item.id)"
+                  class="w-6 h-6 cursor-pointer"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+                  ></path>
+                </svg>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -45,5 +63,9 @@ const data = ref([]);
 onMounted(async () => {
   data.value = await pb.collection("all_users").getFullList();
 });
+let deleteUser = async (id) => {
+  await pb.collection("all_users").delete(id);
+  data.value = await pb.collection("all_users").getFullList();
+};
 </script>
 <style></style>
